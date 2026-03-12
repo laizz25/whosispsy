@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh-Hant"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;誰是臥底 - 7人港式版 (100組題目)&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root { --primary: #3b82f6; --danger: #ef4444; --success: #22c55e; --bg: #f3f4f6; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container { width: 90%; max-width: 400px; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-box { height: 160px; display: flex; align-items: center; justify-content: center; border: 3px dashed #d1d5db; border-radius: 15px; margin: 20px 0; background: #f9fafb; transition: all 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.word { font-size: 32px; font-weight: bold; color: #1f2937; display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hidden { color: #9ca3af; font-style: italic; font-size: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn { width: 100%; padding: 16px; font-size: 18px; font-weight: bold; border: none; border-radius: 12px; cursor: pointer; margin-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary { background: var(--primary); color: white; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-next { background: var(--success); color: white; display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-start { background: var(--danger); color: white; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#game-ui, #final-ui { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.counter { font-size: 12px; color: #9ca3af; margin-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="start-ui" class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;🕵️‍♂️ 誰是臥底&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p style="color: #6b7280; margin-bottom: 20px;"&gt;7人模式: 5平民 / 1臥底 / 1白版&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="text-align: left; font-size: 13px; color: #64748b; background: #f1f5f9; padding: 15px; border-radius: 8px; margin-bottom: 20px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>💡 &lt;b&gt;玩法：&lt;/b&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>1. 傳電話畀「玩家 1」&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>2. 佢睇完撳「傳畀下一位」交畀玩家 2&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>3. 7 個人睇晒就開始吹水！</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-start" onclick="initGame()"&gt;🚀 隨機抽題發牌&lt;/button&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="game-ui" class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 id="player-title"&gt;玩家 1&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-box" id="card-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="word-text" class="word"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="placeholder" class="hidden"&gt;👀 準備好先好撳掣睇&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="show-btn" class="btn btn-primary" onclick="showWord()"&gt;👁️ 睇我嘅詞語&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="next-btn" class="btn btn-next" onclick="nextPlayer()"&gt;➡️ 傳畀下一位&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="counter" id="player-count"&gt;1 / 7&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="final-ui" class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 style="font-size: 40px;"&gt;🗣️&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;分配完畢！&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;大家可以開始第一輪描述喇。&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p style="color: #6b7280;"&gt;提示：白版要靠聽人講嘢嚟估個詞！&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-start" onclick="location.reload()"&gt;🔄 下一 round 換題目&lt;/button&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const topics = [</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["燒賣", "蝦餃"], ["魚蛋", "牛丸"], ["菠蘿包", "雞尾包"], ["蛋撻", "鮮奶撻"], ["乾炒牛河", "星洲炒米"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["雲吞麵", "水餃麵"], ["碗仔翅", "生菜魚肉"], ["雞蛋仔", "格仔餅"], ["西多士", "奶油豬"], ["豬腸粉", "陳村粉"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["譚仔", "三哥"], ["壽司", "刺身"], ["魚柳包", "豬柳蛋漢堡"], ["叉燒飯", "燒肉飯"], ["糯米雞", "珍珠雞"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["煎釀三寶", "炸大腸"], ["車仔麵", "拉麵"], ["出前一丁", "公仔麵"], ["絲襪奶茶", "鴛鴦"], ["凍檸茶", "凍檸賓"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["楊枝甘露", "芝麻糊"], ["砵仔糕", "白糖糕"], ["臭豆腐", "榴槤"], ["維他奶", "陽光豆奶"], ["大家樂", "大快活"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["的士", "小巴"], ["地鐵", "巴士"], ["叮叮", "天星小輪"], ["紅Van", "綠Van"], ["旺角", "尖沙咀"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["銅鑼灣", "中環"], ["海洋公園", "迪士尼"], ["紅館", "亞博"], ["昂坪360", "山頂纜車"], ["蘭桂坊", "諾士佛台"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["輕鐵", "港鐵"], ["南丫島", "長洲"], ["羅湖", "落馬洲"], ["惠康", "百佳"], ["萬寧", "屈臣氏"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["八達通", "支付寶"], ["PayMe", "轉數快"], ["淘寶", "HKTVmall"], ["姜濤", "Anson Lo"], ["Mirror", "Error"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["TVB", "ViuTV"], ["六合彩", "賽馬"], ["中秋節", "端午節"], ["射波", "蛇王"], ["放飛機", "遲到"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["扮工", "加班"], ["波鞋", "拖鞋"], ["行山", "露營"], ["辭職", "搵工"], ["抽水", "割席"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["女神", "文青"], ["港女", "港男"], ["執雞", "執笠"], ["發夢", "諗多咗"], ["尷尬", "丟架"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["拍拖", "出軌"], ["結婚", "擺酒"], ["股票", "樓市"], ["減肥", "增肥"], ["鬧鐘", "夢遊"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["誰是臥底", "狼人殺"], ["李嘉誠", "李家超"], ["陳奕迅", "張敬軒"], ["林家謙", "MC"], ["麥當勞", "肯德基"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["豪大大", "繼光香香雞"], ["珍奶", "水果茶"], ["洗頭水", "沐浴露"], ["底褲", "睡衣"], ["大帽山", "飛鵝山"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["嘉頓中心", "美心皇宮"], ["阿布泰", "松本清"], ["便利店", "超市"], ["戲院", "K房"], ["夾公仔", "打機"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["信用卡", "現金"], ["借錢", "找數"], ["行街", "睇戲"], ["煲劇", "睇YouTube"], ["IG", "Threads"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["FaceTime", "WhatsApp"], ["冷氣機", "暖爐"], ["雨遮", "雨褸"], ["背囊", "腰包"], ["眼鏡", "隱形眼鏡"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["洗碗", "倒垃圾"], ["減稅", "派錢"], ["旅行", "Staycation"], ["公屋", "私樓"], ["富豪雪糕", "雪糕車"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>["尖東", "尖西"], ["自動電梯", "升降機"], ["暑假", "寒假"], ["打小人", "睇症"], ["姜蔥", "芫荽"]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let playerRoles = [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let currentIndex = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function initGame() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const pair = topics[Math.floor(Math.random() * topics.length)];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const isAUndercover = Math.random() &gt; 0.5;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const civilianWord = isAUndercover ? pair[1] : pair[0];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const undercoverWord = isAUndercover ? pair[0] : pair[1];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 5平民, 1臥底, 1白版</p>
+<p class="p1"><span class="Apple-converted-space">        </span>playerRoles = Array(5).fill(civilianWord);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>playerRoles.push(undercoverWord);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>playerRoles.push("⬜ 你係白版\n(冇字㗎，靠聽啦！)");</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 洗牌</p>
+<p class="p1"><span class="Apple-converted-space">        </span>playerRoles.sort(() =&gt; Math.random() - 0.5);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('start-ui').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('game-ui').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateUI();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showWord() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const wordText = document.getElementById('word-text');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>wordText.innerText = playerRoles[currentIndex];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>wordText.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('placeholder').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('show-btn').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('next-btn').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('card-box').style.borderColor = '#3b82f6';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('card-box').style.background = '#eff6ff';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function nextPlayer() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>currentIndex++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (currentIndex &gt;= 7) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('game-ui').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('final-ui').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateUI();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateUI() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('player-title').innerText = `玩家 ${currentIndex + 1}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('player-count').innerText = `${currentIndex + 1} / 7`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('word-text').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('placeholder').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('show-btn').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('next-btn').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('card-box').style.borderColor = '#d1d5db';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('card-box').style.background = '#f9fafb';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
